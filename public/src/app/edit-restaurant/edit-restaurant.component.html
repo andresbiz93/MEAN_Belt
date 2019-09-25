@@ -1,0 +1,23 @@
+<h3>Edit a Restaurant</h3>
+
+<div *ngIf = "errors">
+    
+        <h4 *ngFor = "let error of errors_to_show">{{error}}</h4>
+
+</div>
+
+<form (submit) = "updateRestaurantToService()" method = "post">
+
+    <p>Restaurant Name:</p>
+    
+    <input *ngIf = "restaurant_to_show != null" type = "text" name = "name" [(ngModel)] = "restaurant_to_show.name">
+    
+    <p>Cuisine Type:</p>
+
+    <input *ngIf = "restaurant_to_show != null" type = "text" name = "cuisine" [(ngModel)] = "restaurant_to_show.cuisine">
+
+    <button [routerLink] = "['/restaurants']">Cancel</button>
+
+    <button type = "submit">Update</button>
+
+</form>

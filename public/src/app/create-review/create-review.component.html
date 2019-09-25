@@ -1,0 +1,30 @@
+<h3 *ngIf = "restaurant_to_show != null">Write a Review for {{restaurant_to_show.name}}!</h3>
+
+<div *ngIf = "errors">
+
+        <h4 *ngFor = "let error of errors_to_show">{{error}}</h4>
+    
+    </div>
+    
+    <form (submit) = "postReviewToService()" method = "post">
+    
+        <p>Your Name:</p>
+        <input type = "text" name = "author" [(ngModel)] = "new_review.author">
+    
+        <p>Stars:</p>
+        <select name = "stars" [(ngModel)] = "new_review.stars">
+            <option>5 Stars</option>
+            <option>4 Stars</option>
+            <option>3 Stars</option>
+            <option>2 Stars</option>
+            <option>1 Stars</option>
+        </select>
+
+        <p>Description:</p>
+        <input type = "text" name = "content" [(ngModel)] = "new_review.content">
+    
+        <button *ngIf = "restaurant_to_show != null" [routerLink] = "['/restaurants', restaurant_to_show._id]">Cancel</button>
+    
+        <button type = "submit">Add Review</button>
+    
+    </form>
